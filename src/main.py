@@ -120,8 +120,8 @@ def print_recommendations(label: str, profile: dict, songs: list) -> None:
     print(f"\n=== {label} ===\n")
     recommendations = recommend_songs(profile, songs, k=5)
 
-    for song, score, explanation in recommendations:
-        print(f"{song['title']} - Score: {score:.2f}")
+    for song, score, explanation, confidence in recommendations:
+        print(f"{song['title']} - Score: {score:.2f} - Confidence: {confidence}")
         print(f"Because: {explanation}")
         print()
 

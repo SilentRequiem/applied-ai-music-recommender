@@ -1,5 +1,6 @@
 from typing import List, Dict, Tuple
 from dataclasses import dataclass
+from src.reliability import calculate_confidence
 import csv
 
 @dataclass
@@ -156,17 +157,22 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
 
     return score, reasons
 
-def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tuple[Dict, float, str]]:
+def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tuple[Dict, float, str, str]]:
     """
     Functional implementation of the recommendation logic.
     Required by src/main.py
     """
-    scored_songs: List[Tuple[Dict, float, str]] = []
+    scored_songs: List[Tuple[Dict, float, str, str]] = []
 
     for song in songs:
         score, reasons = score_song(user_prefs, song)
         explanation = "; ".join(reasons)
-        scored_songs.append((song, score, explanation))
+
+        # NEW: calculate confidence
+        confidence = calculate_confidence(score)
+
+        # FIX: append result
+        scored_songs.append((song, score, explanation, confidence))
 
     scored_songs.sort(key=lambda item: item[1], reverse=True)
     return scored_songs[:k]
