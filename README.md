@@ -24,21 +24,9 @@ An evaluation script was also added to test the system across multiple profiles 
 
 ---
 
-## Architecture Overview
+## System Architecture
 
-The system follows this flow:
-
-User Profile
-↓
-Song Dataset
-↓
-Scoring Engine
-↓
-Confidence / Reliability Checker
-↓
-Ranked Recommendations + Explanation
-↓
-Evaluation Script
+![System Diagram](assets/system_diagram.png)
 
 ---
 
@@ -111,7 +99,11 @@ Adding confidence scoring was important because raw scores alone do not communic
 
 ## Demo Video
 
-(Add your Loom link here)
+Walkthrough of the system running end-to-end:
+
+[Watch Demo](assets/Clip.mp4)
+
+[Mirror Link](https://drive.google.com/file/d/1J8iAr48iZ0rxKHaAc2kSOpjhJe7AM2mn/view?usp=sharing)
 
 ---
 

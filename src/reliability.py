@@ -1,5 +1,3 @@
-# reliability.py
-
 def calculate_confidence(score, max_score=7):
     """
     Converts raw score into a confidence level
